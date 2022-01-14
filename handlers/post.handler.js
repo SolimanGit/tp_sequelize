@@ -1,12 +1,13 @@
-const {Post, Comment} = require("./sequelize.js")
+const {Post, Comment} = require("../models")
 
 exports.createPost = async(req,res) => {
     // res.send('ALL Posts')
-    const post = await Post.create(req.body)
-    .then((res)=>{
+    Post.create(req.body)
+    .then((response)=>{
         res.send('Post created')
     })
     .catch((err)=>{
+        console.log(err)
         res.status(400).send({message: "Bad Request"})
     })
 }

@@ -1,9 +1,9 @@
-const {Commentaire} = require("./sequelize.js")
+const {Commentaire} = require("../models")
 
 exports.createCommentaire = async(req,res) => {
     // res.send('ALL Commentaires')
     const commentaire = await Commentaire.create(req.body)
-    .then((res)=>{
+    .then((response)=>{
         res.send('Commentaire created')
     })
     .catch((err)=>{

@@ -1,12 +1,13 @@
-const {User, Post} = require("./sequelize.js")
+const {User, Post} = require("../models")
 
 exports.createUser = async(req,res) => {
     // res.send('ALL users')
     const user = await User.create(req.body)
-    .then((res)=>{
+    .then((response)=>{
         res.send('User created')
     })
     .catch((err)=>{
+        console.log(err)
         res.status(400).send({message: "Bad Request"})
     })
 }

@@ -1,12 +1,13 @@
-const {Role} = require("./sequelize.js")
+const {Role} = require("../models")
 
 exports.createRole = async(req,res) => {
     // res.send('ALL Roles')
     const role = await Role.create(req.body)
-    .then((res)=>{
+    .then((response)=>{
         res.send('Role created')
     })
     .catch((err)=>{
+        console.log(err)
         res.status(400).send({message: "Bad Request"})
     })
 }
